@@ -21,7 +21,7 @@ yarn add @b12k/vue3-router-gmc
 pnpm
 
 ```shell
-pnmp add @b12k/vue3-router-gmc
+pnpm add @b12k/vue3-router-gmc
 ```
 
 ## Usage
@@ -45,4 +45,4 @@ router.beforeEach(async (to, from) => {
 
 ## Real world example
 
-This lib is used in [The Boilerplate Vue](https://github.com/b12k/the-boilerplate-vue) 👉 [HERE](https://github.com/b12k/the-boilerplate-vue/)
+This lib is used in [The Boilerplate Vue](https://github.com/b12k/the-boilerplate-vue) 👉 [HERE](https://github.com/b12k/the-boilerplate-vue/blob/master/src/client/router/exec-route-pre-fetch.ts#L12)
