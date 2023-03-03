@@ -1,7 +1,7 @@
 {
   "git": {
     "commitMessage": "ci: release v${version} [skip actions]",
-    "pushRepo": "git@github.com:b12k/mvm.git"
+    "pushRepo": "git@github.com:b12k/vue3-router-gmc.git"
   },
   "github": {
     "release": true,
