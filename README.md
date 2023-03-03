@@ -43,6 +43,6 @@ router.beforeEach(async (to, from) => {
 });
 ```
 
-## Usage example
+## Real world example
 
-This lib is used in
+This lib is used in [The Boilerplate Vue](https://github.com/b12k/the-boilerplate-vue) 👉 [HERE](https://github.com/b12k/the-boilerplate-vue/)
