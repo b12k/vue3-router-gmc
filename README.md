@@ -1,7 +1,7 @@
 # **<div align="center">Vue 3 Router - Get Matched Components</div>**
 
 <div align="center">
-  <p>List components that are going enter, leave or stay after navigation</p>
+  <p>List components that are going to enter, leave or stay on the page after navigation</p>
 </div>
 
 ## Instalation
@@ -36,12 +36,14 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
   const {
-    entering, // array of components entering the view
-    leaving, // array of components leaving the view
-    staying, // array of components staying in the view
+    entering, // array of components entering the page
+    leaving, // array of components leaving the page
+    staying, // array of components staying on the page
   } = await getMatchedComponents(to, from);
 });
 ```
+
+💡 Also works with `beforeResolve` guard.
 
 ## Real world example
 
