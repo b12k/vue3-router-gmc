@@ -1,4 +1,4 @@
-# **<div align="center">Vue3 Router - Get Matched Components</div>**
+# **<div align="center">Vue 3 Router - Get Matched Components</div>**
 
 <div align="center">
   <p>List components that are going enter, leave or stay after navigation</p>
