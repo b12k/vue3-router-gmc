@@ -1,0 +1,69 @@
+{
+  "name": "@b12k/vue3-router-gmc",
+  "version": "0.0.0",
+  "description": "Vue 3 Router - Get Matched Components",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [],
+  "author": "Bogdan Kolesnyk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/b12k/vue3-router-gmc.git"
+  },
+  "homepage": "https://github.com/b12k/vue3-router-gmc",
+  "bugs": {
+    "url": "https://github.com/b12k/vue3-router-gmc/issues"
+  },
+  "scripts": {
+    "dev": "pnpm tsup --watch",
+    "lint": "run-p _lint:*",
+    "_lint:types": "tsc --noEmit",
+    "_lint:scripts": "eslint ./src/**/*.ts",
+    "_lint:codestyle": "pnpm prettier . --check",
+    "build": "pnpm tsup --format cjs --target es5 --minify terser",
+    "prepare": "husky install",
+    "release": "release-it --ci",
+    "tsup": "tsup src/index.ts --dts --clean",
+    "husky:pre-commit": "run-p _husky:pre-commit:*",
+    "_husky:pre-commit:typecheck": "pnpm _lint:types",
+    "_husky:pre-commit:lintstaged": "lint-staged"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.4.4",
+    "@commitlint/config-conventional": "17.4.4",
+    "@release-it/conventional-changelog": "5.1.1",
+    "@swc/core": "1.3.37",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@typescript-eslint/parser": "5.54.0",
+    "eslint": "8.35.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-import-resolver-typescript": "3.5.3",
+    "eslint-plugin-eslint-comments": "3.2.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "eslint-plugin-unicorn": "45.0.2",
+    "eslint-plugin-unused-imports": "2.0.0",
+    "husky": "8.0.3",
+    "lint-staged": "13.1.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.8.4",
+    "release-it": "15.7.0",
+    "terser": "5.16.5",
+    "tsup": "6.6.3",
+    "typescript": "4.9.5",
+    "vue": "3.2.47",
+    "vue-router": "4.1.6"
+  },
+  "peerDependencies": {
+    "vue": ">=3",
+    "vue-router": ">=4"
+  }
+}
