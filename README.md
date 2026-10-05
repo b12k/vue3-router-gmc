@@ -64,10 +64,10 @@ by Vue Router to distinguish them from lazy loaders.
 ## Development
 
 Use Node.js 26 (`.nvmrc`) and the pnpm version pinned in `packageManager`.
-The package targets the current Vue and Vue Router major versions and ships ESM.
+The package targets the current Vue and Vue Router major versions and ships ESM and CommonJS.
 
 - `pnpm dev` watches the library and declarations with Rslib.
-- `pnpm build` creates the ESM bundle and declarations with Rslib.
+- `pnpm build` creates ESM and CJS bundles with separate declarations with Rslib.
 - `pnpm test` runs Rstest regression tests, including real Vue Router integration.
-- `pnpm test:types` checks the built public declarations.
+- `pnpm test:types` checks the built public declarations for both import and require.
 - `pnpm lint` checks types, type-aware Oxlint rules, and Oxfmt formatting.
