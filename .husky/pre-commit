@@ -1,6 +1,1 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-exec 1> /dev/tty
-
 pnpm husky:pre-commit

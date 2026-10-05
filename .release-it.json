@@ -1,7 +1,10 @@
 {
   "git": {
     "commitMessage": "ci: release v${version} [skip actions]",
-    "pushRepo": "git@github.com:b12k/vue3-router-gmc.git"
+    "requireBranch": "master",
+    "commit": true,
+    "tag": true,
+    "push": true
   },
   "github": {
     "release": true,
@@ -11,5 +14,10 @@
     "@release-it/conventional-changelog": {
       "preset": "conventionalcommits"
     }
+  },
+  "npm": {
+    "publishPackageManager": "pnpm",
+    "publishArgs": ["--provenance", "--no-git-checks"],
+    "skipChecks": true
   }
 }

@@ -1,21 +1,17 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
-    "module": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
     "strict": true,
-    "target": "esnext",
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     "skipLibCheck": true,
-    "importHelpers": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
     "isolatedModules": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "baseUrl": ".",
     "declaration": true,
-    "declarationDir": "./dist"
+    "rootDir": "./src",
+    "declarationDir": "./dist",
+    "types": []
   },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts"]
 }

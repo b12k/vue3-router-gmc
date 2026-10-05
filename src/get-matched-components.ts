@@ -11,31 +11,24 @@ export const getMatchedComponents = async (
   to: RouteLocationNormalized,
   from?: RouteLocationNormalizedLoaded,
 ) => {
-  const toPromises = to.matched.map((route) =>
-    resolveComponents(route.components),
-  );
-  const fromPromises = from
-    ? from.matched.map((route) => resolveComponents(route.components))
-    : [];
-
-  const [componentsTo, componentsFrom] = await Promise.all([
-    ...toPromises,
-    ...fromPromises,
+  const [groupsTo, groupsFrom] = await Promise.all([
+    Promise.all(to.matched.map((record) => resolveComponents(record))),
+    Promise.all(
+      (from?.matched ?? []).map((record) => resolveComponents(record)),
+    ),
   ]);
+  const componentsTo = groupsTo.flat();
+  const componentsFrom = groupsFrom.flat();
 
   const staying: Array<DefineComponent> = [];
-  const entering: Array<DefineComponent> = componentsTo.filter((component) => {
-    const isStaying = (componentsFrom || []).includes(component);
+  const entering = componentsTo.filter((component) => {
+    const isStaying = componentsFrom.includes(component);
     if (isStaying) staying.push(component);
     return !isStaying;
   });
-  const leaving = (componentsFrom || []).filter(
+  const leaving = componentsFrom.filter(
     (component) => !staying.includes(component),
   );
 
-  return {
-    entering,
-    leaving,
-    staying,
-  };
+  return { entering, leaving, staying };
 };
