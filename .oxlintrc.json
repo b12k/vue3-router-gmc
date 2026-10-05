@@ -30,5 +30,5 @@
       }
     }
   ],
-  "ignorePatterns": ["test/types.ts"]
+  "ignorePatterns": ["test/types.ts", "test/types.cts"]
 }
