@@ -1,4 +1,4 @@
 {
-  "*": ["pnpm prettier --check"],
-  "*.ts": ["pnpm eslint"]
+  "*": ["pnpm oxfmt --check --no-error-on-unmatched-pattern"],
+  "*.{ts,mjs}": ["pnpm oxlint --deny-warnings"]
 }

@@ -14,48 +14,42 @@ jobs:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: 'https://registry.npmjs.org'
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v6.1.0
         with:
           run_install: false
-          version: 7
 
-      - name: Setup node_modules cache
-        uses: actions/cache@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v7.0.0
         with:
-          path: '**/node_modules'
-          key: node-modules-cache-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: node-modules-cache-
+          node-version-file: .nvmrc
+          registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Setup SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: github.com
-
-      - name: Configure git
-        run: |
-          git config user.name "Bogdan Kolesnyk"
-          git config user.email "bogdan.kolesnyk@gmail.com"
 
       - name: Lint
         run: pnpm lint
 
       - name: Build
         run: pnpm build
+
+      - name: Test
+        run: pnpm test
+
+      - name: Check public types
+        run: pnpm test:types
+
+      - name: Configure git
+        run: |
+          git config user.name "Bogdan Kolesnyk"
+          git config user.email "bogdan.kolesnyk@gmail.com"
 
       - name: Release
         run: pnpm release
